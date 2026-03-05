@@ -1,6 +1,5 @@
 FROM sagemath/sagemath:latest
 
-USER root
-RUN sage -pip install jupyterlab
+RUN sage -python -m ipykernel install --user --name sage --display-name "SageMath"
 
-USER sage
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser"]
